@@ -1,5 +1,7 @@
 ﻿import React, { SetStateAction, useState } from "react";
 import { styled } from "styled-components";
+import Button from "./Button";
+import Input from "./Input";
 
 const ControlContainer = styled.div`
   display: flex;
@@ -7,47 +9,7 @@ const ControlContainer = styled.div`
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 `;
-// Define a type for your custom props
-type myProps = {
-  $invalid?: boolean;
-};
 
-const Label = styled.label<myProps>`
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: ${({ $invalid }) => ($invalid ? "#f87171" : "#6b7280")};
-`;
-const Input = styled.input<myProps>`
-  width: 100%;
-  padding: 0.75rem 1rem;
-  line-height: 1.5;
-  background-color: ${({ $invalid }) => ($invalid ? "#fed2d2" : "#d1d5db")};
-  color: ${({ $invalid }) => ($invalid ? "#ef4444" : "#374151")};
-  border: 1px solid ${({ $invalid }) => ($invalid ? "#ef4444" : "transparent")};
-  border-radius: 0.25rem;
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
-`;
-
-const Button = styled.button`
-  padding: 1rem 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-radius: 0.25rem;
-  color: #1f2937;
-  background-color: #f0b322;
-  border-radius: 6px;
-  border: none;
-
-  &:hover {
-    background-color: #f0920e;
-  }
-`;
 const TextButton = styled.button`
   color: #f0b322;
   border: none;
@@ -85,21 +47,18 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <ControlContainer>
         <p className="paragraph">
-          <Label $invalid={emailNotValid}>Email</Label>
           <Input
+            label={"Email"}
             type="email"
-            // style={{
-            //     backgroundColor:emailNotValid?'#fed2d2':'#d1d5db'
-            // }}
-            $invalid={emailNotValid}
+            invalid={emailNotValid}
             onChange={(event) => handleInputChange("email", event.target.value)}
           />
         </p>
         <p>
-          <Label $invalid={passwordNotValid}>Password</Label>
           <Input
+            label={"Password"}
             type="password"
-            $invalid={passwordNotValid}
+            invalid={passwordNotValid}
             onChange={(event) =>
               handleInputChange("password", event.target.value)
             }
