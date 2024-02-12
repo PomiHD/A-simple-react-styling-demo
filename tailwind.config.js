@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         title: ['"Pacifico"', '"cursive"'],
-      }
+      },
     },
   },
   plugins: [],

@@ -15,7 +15,9 @@ export default function Header() {
       >
         ReactArt
       </h1>
-      <p className={"md:text-stone-500"}>A community of artists and art-lovers.</p>
+      <p className={"md:text-stone-500"}>
+        A community of artists and art-lovers.
+      </p>
     </header>
   );
 }
